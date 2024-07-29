@@ -1,4 +1,4 @@
-import React, { FC, InputHTMLAttributes, ReactNode } from "react";
+import React, { ChangeEvent, FC, InputHTMLAttributes, ReactNode } from "react";
 import classNames from "classnames";
 import * as cls from "./Input.module.scss";
 
@@ -13,7 +13,7 @@ interface InputProps extends HTMLInputProps {
   label?: string;
   value?: string | number;
   error?: boolean;
-  onChange?: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onChange?: (value: string) => void;
   ToggleIcon?: React.FC<React.SVGProps<SVGSVGElement>>;
 }
 
@@ -30,25 +30,33 @@ export const Input = (props: InputProps) => {
     ...otherProps
   } = props;
 
+  const onChangeHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    onChange?.(e.target.value);
+  };
+
   return (
     <div className={classNames(cls.InputWrapper, [className])}>
+
       {label && <label className={cls.label}>{label}</label>}
-      <div className={cls.inputContainer}>
+      
+      <div className={cls.inputContainer}>  
         <input
           className={classNames(cls.input, {
             [cls.hasToggleIcon]: !!ToggleIcon,
           })}
           type={type}
           value={value}
-          onChange={onChange}
+          onChange={onChangeHandler}
           {...otherProps}
           disabled={disabled}
         />
+        
         {ToggleIcon && (
           <span className={cls.passwordToggleIcon}>
             <ToggleIcon />
           </span>
         )}
+
         {/* {error && <span className={cls.error}>Required</span>} */}
       </div>
     </div>
