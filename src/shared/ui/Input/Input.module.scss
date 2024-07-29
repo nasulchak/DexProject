@@ -1,0 +1,57 @@
+.InputWrapper {
+  position: relative;
+}
+
+.label {
+  display: block;
+  font: var(--font-input);
+  color: var(--grey);
+}
+
+.inputContainer {
+  position: relative;
+  width: 366px;
+  display: flex;
+  align-items: center;
+}
+
+.input {
+  width: 100%;
+  height: 40px;
+  background-color: var(--lightest-grey-1);
+  border: none;
+  outline: none;
+  border-radius: 4px;
+  font: var(--font-input);
+  color: var(--dark-grey);
+  padding: 0 1em;
+
+  &:hover {
+    background-color: var(--lightest-grey);
+  }
+
+  &:focus {
+    box-shadow: 0 0 5px 0 #d9d9d9;
+  }
+
+  &:disabled {
+    color: var(--lightest-grey);
+
+    &:hover {
+      background-color: var(--lightest-grey-1);
+    }
+  }
+}
+
+.hasToggleIcon {
+  padding-right: 2.5em;
+}
+
+.passwordToggleIcon {
+  position: absolute;
+  right: 10px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

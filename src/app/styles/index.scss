@@ -1,0 +1,9 @@
+@import "./reset";
+@import "./variables/global.scss";
+
+@font-face {
+  font-family: "Avenir";
+  src: url("../../shared/assets/fonts/Avenir-Medium.woff2") format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
